@@ -117,8 +117,9 @@ public class User{
         return false;
     }
 
-    void setRoutine_id(Integer id){
+    void setRoutine(Integer id, Queue<Workout> workout){
         routine_id = id;
+        user_workout = workout;
     }
 
     boolean setUser_max(Integer id, Integer weight){
@@ -135,4 +136,6 @@ public class User{
     void setProfile_pic(Bitmap newImage){
         this.profile_pic = newImage;
     }
+
+    void onAttach(){}
 }
