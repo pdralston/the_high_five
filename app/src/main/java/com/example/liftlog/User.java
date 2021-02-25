@@ -28,9 +28,9 @@ public class User{
     public float weight;
     public int routine_id;
     public HashMap<String, Integer> user_max;
-    public LinkedList<Workout> user_workout;
+    public ArrayList<Workout> user_workout;
 
-    public User(String nEmail, String nName, GregorianCalendar nBirthDate, boolean nSex, Integer feet, Integer inches, float nWeight, LinkedList<Workout> queueWorkout){
+    public User(String nEmail, String nName, GregorianCalendar nBirthDate, boolean nSex, Integer feet, Integer inches, float nWeight, ArrayList<Workout> queueWorkout){
         //random values
         this.email = nEmail;
         this.name = nName;
@@ -55,7 +55,7 @@ public class User{
         this.user_max = new HashMap<String, Integer>();
         user_max.put("0_k",0);
 
-        this.user_workout = new LinkedList<>();
+        this.user_workout = new ArrayList<>();
         ExerciseStats tempEx = new ExerciseStats(0,0,0,0);
         LinkedList<ExerciseStats> tempList2 = new LinkedList<>();
         tempList2.add(tempEx);
@@ -78,7 +78,7 @@ public class User{
         long R1 = (long)dataObj.child("routine_id").getValue();
         this.routine_id = (int) R1;
 
-        this.user_workout = new LinkedList<>();
+        this.user_workout = new ArrayList<>();
         for(DataSnapshot workSnap : dataObj.child("user_workout").getChildren())
         {
             Workout newWork = new Workout((Long) workSnap.child("id").getValue(), (String) workSnap.child("description").getValue(), (String) workSnap.child("name").getValue());

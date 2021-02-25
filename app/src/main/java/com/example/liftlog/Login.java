@@ -105,9 +105,12 @@ public class Login extends AppCompatActivity {
                                 dataRef.addValueEventListener(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(DataSnapshot dataSnapshot) {
-                                        if(dataSnapshot.getValue() != null)
+                                        if(dataSnapshot.getValue() != null) {
+                                            Log.i("Login", "Exists");
                                             MyApplication.user = new User(dataSnapshot);
+                                        }
                                         else {
+                                            Log.i("Login", "No-exists");
                                             MyApplication.user = new User(user.getEmail());
                                             MyApplication.user.updateToFirebase();
                                         }
